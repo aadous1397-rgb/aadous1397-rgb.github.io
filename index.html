@@ -1,313 +1,184 @@
-:root {
-  --primary-color: #2c3e50;
-  --accent-color: #3498db;
-  --text-color: #333;
-  --bg-color: #f4f7f6;
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - Abdelhamid Adous</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+  <aside class="sidebar">
+    <div class="profile-img-container">
+      <img src="profile.jpg" alt="Abdelhamid Adous" class="profile-img">
+    </div>
+
+    <section class="contact-info">
+      <h3>CONTACT</h3>
+      <ul>
+        <li><i class="fas fa-phone"></i> +212 706711076</li>
+        <li><i class="fas fa-envelope"></i> <a href="mailto:adoushamid3@gmail.com">adoushamid3@gmail.com</a></li>
+        <li><i class="fas fa-map-marker-alt"></i> Marrakech Mhamid 9</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3>RÉSEAUX</h3>
+      <ul>
+        <li><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/hamid___ado12?igsh=MTVmdXl6aDV4cjA2bQ==" target="_blank">Instagram</a></li>
+        <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/hamid-adous-13chefchaoun12/" target="_blank">LinkedIn</a></li>
+        <li><i class="fab fa-github"></i> <a href="https://github.com/aadous1397-rgb" target="_blank">GitHub</a></li>
+      </ul>
+    </section>
+
+    <section class="languages">
+      <h3>LANGUES</h3>
+      <ul>
+        <li>Arabe : Courant</li>
+        <li>Français : Niveau moyen</li>
+        <li>Anglais : Niveau moyen</li>
+      </ul>
+    </section>
+  </aside>
+
+  <main class="main-content">
+
+    <header>
+      <h1>ABDELHAMID ADOUS</h1>
+      <h2>Étudiant en Informatique</h2>
+    </header>
+
+    <section class="reveal">
+      <h3><i class="fas fa-user"></i> PROFIL</h3>
+      <p>
+        Étudiant en informatique motivé, sérieux et passionné par le développement
+        et les nouvelles technologies. Doté d’une bonne capacité d’apprentissage,
+        je suis capable de travailler en équipe et de m’adapter rapidement aux nouvelles situations.
+      </p>
+    </section>
+
+    <section class="reveal">
+      <h3><i class="fas fa-bullseye"></i> OBJECTIF</h3>
+      <p>
+        À la recherche d’un stage en informatique afin de développer mes compétences
+        techniques et acquérir une première expérience professionnelle dans le domaine.
+      </p>
+    </section>
+
+    <section class="reveal">
+      <h3><i class="fas fa-graduation-cap"></i> FORMATION</h3>
+
+      <button class="formation-btn">Bac +2 en Informatique</button>
+      <div class="formation-panel">
+        <p>Faculté des Sciences Semlalia (FSSM) - Marrakech</p>
+        <span>2025 - 2026</span>
+      </div>
+
+      <button class="formation-btn">Baccalauréat</button>
+      <div class="formation-panel">
+        <p>Sciences Physique</p>
+        <span>2023 - 2024</span>
+      </div>
+    </section>
+
+    <section class="reveal skills-section">
+      <h3><i class="fas fa-code"></i> COMPÉTENCES</h3>
+
+      <p>C / C++ / JavaScript</p>
+      <div class="bar" data-percent="75%">
+        <div class="progress" data-width="75%"></div>
+      </div>
+
+      <p>HTML / CSS</p>
+      <div class="bar" data-percent="80%">
+        <div class="progress" data-width="80%"></div>
+      </div>
+
+      <p>Linux / Windows</p>
+      <div class="bar" data-percent="65%">
+        <div class="progress" data-width="65%"></div>
+      </div>
+
+      <p>Word / Excel / PowerPoint</p>
+      <div class="bar" data-percent="70%">
+        <div class="progress" data-width="70%"></div>
+      </div>
+    </section>
+
+    <section class="reveal">
+      <h3><i class="fas fa-folder-open"></i> PROJETS / EXPÉRIENCES</h3>
+      <div id="root"></div>
+    </section>
+
+    <section class="reveal">
+      <h3><i class="fas fa-envelope"></i> CONTACTEZ-MOI</h3>
+
+      <form id="form">
+        <input type="text" id="nom" placeholder="Nom">
+        <input type="email" id="email" placeholder="Email">
+        <textarea id="msg" placeholder="Message"></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+
+      <p id="result"></p>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+
+<script type="text/babel">
+function ProjectCard(props) {
+  return (
+    <div className="project-card">
+      <h4>{props.title}</h4>
+      <p>{props.description}</p>
+      <p><strong>Technologies :</strong> {props.tech}</p>
+      <a href={props.link} target="_blank">Voir projet</a>
+    </div>
+  );
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+function App() {
+  return (
+    <div>
+      <ProjectCard
+        title="CV Personnel Interactif"
+        description="Création d’un CV en ligne moderne avec animations, formulaire et composants React."
+        tech="HTML, CSS, jQuery, ReactJS"
+        link="https://aadous1397-rgb.github.io"
+      />
+
+      <ProjectCard
+        title="Jeu C++ SFML"
+        description="Mini-jeu réalisé en C++ avec la programmation orientée objet."
+        tech="C++, SFML"
+        link="https://github.com/aadous1397-rgb/jeu-cpp-sfml"
+      />
+
+      <ProjectCard
+        title="Site Web - Projet Web"
+        description="Création d’un site web dynamique avec design moderne et responsive."
+        tech="HTML, CSS, JavaScript"
+        link="https://zakaria936.github.io/projet-web/"
+      />
+    </div>
+  );
 }
 
-body {
-  background: var(--bg-color);
-  color: var(--text-color);
-  padding: 40px 20px;
-  overflow-x: auto;
-  animation: pageFade 1s ease-in-out;
-}
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
 
-/* CV */
-.container {
-  background: white;
-  width: 900px;
-  min-width: 900px;
-  margin: auto;
-  display: flex;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  min-height: 1100px;
-}
-
-/* LEFT */
-.sidebar {
-  width: 30%;
-  background: var(--primary-color);
-  color: white;
-  padding: 40px 20px;
-  animation: slideFromLeft 1s ease;
-}
-
-.profile-img-container {
-  text-align: center;
-  margin-bottom: 35px;
-}
-
-.profile-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 4px solid var(--accent-color);
-  object-fit: cover;
-  transition: 0.3s;
-}
-
-.profile-img:hover {
-  transform: scale(1.06);
-}
-
-.sidebar section {
-  margin-bottom: 35px;
-}
-
-.sidebar h3 {
-  border-bottom: 2px solid var(--accent-color);
-  padding-bottom: 8px;
-  margin-bottom: 18px;
-  font-size: 1.1rem;
-}
-
-.sidebar ul {
-  list-style: none;
-}
-
-.sidebar ul li {
-  margin-bottom: 14px;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.sidebar a {
-  color: white;
-  text-decoration: none;
-}
-
-.sidebar a:hover {
-  color: var(--accent-color);
-}
-
-/* RIGHT */
-.main-content {
-  width: 70%;
-  padding: 50px;
-  animation: slideFromRight 1s ease;
-}
-
-header {
-  border-bottom: 3px solid var(--primary-color);
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-}
-
-header h1 {
-  font-size: 2.6rem;
-  color: var(--primary-color);
-  text-transform: uppercase;
-  animation: titleZoom 1.2s ease;
-}
-
-header h2 {
-  color: var(--accent-color);
-  font-weight: 400;
-  margin-top: 5px;
-}
-
-section {
-  margin-bottom: 30px;
-}
-
-section h3 {
-  color: var(--primary-color);
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-p {
-  line-height: 1.6;
-  color: var(--text-color);
-}
-
-/* Formation */
-.formation-btn {
-  width: 100%;
-  padding: 12px;
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  margin-top: 8px;
-  cursor: pointer;
-  border-radius: 6px;
-  text-align: left;
-  font-weight: bold;
-}
-
-.formation-panel {
-  display: none;
-  background: #f1f1f1;
-  padding: 12px;
-  border-left: 4px solid var(--accent-color);
-  margin-bottom: 10px;
-}
-
-.formation-panel span {
-  color: gray;
-  font-size: 14px;
-}
-
-/* Skills */
-.bar {
-  background: #ddd;
-  height: 13px;
-  margin-bottom: 18px;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.progress {
-  width: 0;
-  height: 13px;
-  background: var(--accent-color);
-  border-radius: 20px;
-}
-
-/* Projects */
-.project-card {
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin: 14px 0;
-  border-radius: 8px;
-  background: #fafafa;
-  transition: 0.3s;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 12px #bbb;
-}
-
-.project-card h4 {
-  color: var(--primary-color);
-  margin-bottom: 8px;
-}
-
-.project-card a {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 8px 15px;
-  background: var(--accent-color);
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.project-card a:hover {
-  background: var(--primary-color);
-}
-
-/* Form */
-input,
-textarea {
-  width: 100%;
-  padding: 12px;
-  margin: 7px 0;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-}
-
-textarea {
-  height: 110px;
-}
-
-button[type="submit"] {
-  padding: 12px 25px;
-  background: #27ae60;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background: #219150;
-}
-
-#result {
-  font-weight: bold;
-}
-
-/* Animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: 0.7s;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@keyframes pageFade {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes slideFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideFromRight {
-  from {
-    opacity: 0;
-    transform: translateX(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes titleZoom {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* PC TO PHONE */
-@media screen and (max-width: 900px) {
-  body {
-    padding: 10px;
-    overflow-x: auto;
-  }
-
-  .container {
-    width: 900px;
-    min-width: 900px;
-    max-width: 900px;
-    flex-direction: row;
-  }
-}
+</body>
+</html>
