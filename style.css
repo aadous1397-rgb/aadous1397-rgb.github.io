@@ -12,11 +12,17 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   padding: 40px 20px;
+  animation: pageFade 1s ease-in-out;
 }
 
 .container {
@@ -25,14 +31,16 @@ body {
   max-width: 1000px;
   display: flex;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  min-height: 1100px;
+  min-height: 100vh;
 }
 
+/* SIDEBAR */
 .sidebar {
   background-color: var(--primary-color);
   color: white;
   width: 30%;
   padding: 40px 20px;
+  animation: slideFromLeft 1s ease;
 }
 
 .profile-img-container {
@@ -74,6 +82,7 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  word-break: break-word;
 }
 
 .sidebar a {
@@ -85,9 +94,11 @@ body {
   color: var(--accent-color);
 }
 
+/* MAIN */
 .main-content {
   width: 70%;
   padding: 50px;
+  animation: slideFromRight 1s ease;
 }
 
 header {
@@ -100,6 +111,7 @@ header h1 {
   font-size: 2.5rem;
   color: var(--primary-color);
   text-transform: uppercase;
+  animation: titleZoom 1.2s ease;
 }
 
 header h2 {
@@ -124,6 +136,7 @@ p {
   color: var(--text-color);
 }
 
+/* FORMATION */
 .formation-btn {
   width: 100%;
   padding: 12px;
@@ -150,6 +163,7 @@ p {
   font-size: 14px;
 }
 
+/* SKILLS */
 .bar {
   background: #ddd;
   height: 13px;
@@ -175,6 +189,7 @@ p {
   border-radius: 20px;
 }
 
+/* PROJECTS */
 .project-card {
   border: 1px solid #ddd;
   padding: 15px;
@@ -208,7 +223,9 @@ p {
   background: var(--primary-color);
 }
 
-input, textarea {
+/* FORM */
+input,
+textarea {
   width: 100%;
   padding: 12px;
   margin: 7px 0;
@@ -238,6 +255,7 @@ button[type="submit"]:hover {
   margin-top: 10px;
 }
 
+/* SCROLL ANIMATION */
 .reveal {
   opacity: 0;
   transform: translateY(25px);
@@ -249,28 +267,7 @@ button[type="submit"]:hover {
   transform: translateY(0);
 }
 
-@media (max-width: 768px) {
-  body {
-    padding: 0;
-  }
-
-  .container {
-    flex-direction: column;
-  }
-
-  .sidebar, .main-content {
-    width: 100%;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-}
-/* Animation page */
-body {
-  animation: pageFade 1s ease-in-out;
-}
-
+/* PAGE ANIMATIONS */
 @keyframes pageFade {
   from {
     opacity: 0;
@@ -280,11 +277,6 @@ body {
     opacity: 1;
     transform: scale(1);
   }
-}
-
-/* Animation sidebar */
-.sidebar {
-  animation: slideFromLeft 1s ease;
 }
 
 @keyframes slideFromLeft {
@@ -298,11 +290,6 @@ body {
   }
 }
 
-/* Animation main content */
-.main-content {
-  animation: slideFromRight 1s ease;
-}
-
 @keyframes slideFromRight {
   from {
     opacity: 0;
@@ -312,11 +299,6 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
-}
-
-/* Animation title */
-header h1 {
-  animation: titleZoom 1.2s ease;
 }
 
 @keyframes titleZoom {
@@ -329,46 +311,122 @@ header h1 {
     transform: scale(1);
   }
 }
-@media (max-width: 768px) {
+
+/* TABLET */
+@media screen and (max-width: 900px) {
   body {
-    padding: 0;
+    padding: 20px 10px;
   }
 
   .container {
-    flex-direction: column;
-    width: 100%;
-    margin: 0;
+    max-width: 100%;
   }
 
   .sidebar {
-    width: 100%;
-    text-align: center;
-    padding: 30px 20px;
+    width: 35%;
+    padding: 30px 18px;
   }
 
   .main-content {
-    width: 100%;
-    padding: 25px 20px;
+    width: 65%;
+    padding: 35px 25px;
   }
 
   header h1 {
-    font-size: 28px;
+    font-size: 2rem;
+  }
+}
+
+/* TELEPHONE */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 0 !important;
+    display: block;
+    overflow-x: hidden;
   }
 
-  header h2 {
-    font-size: 20px;
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    flex-direction: column !important;
+    box-shadow: none;
+  }
+
+  .sidebar {
+    width: 100% !important;
+    padding: 30px 22px !important;
+    text-align: center;
+  }
+
+  .sidebar ul li {
+    justify-content: center;
+    font-size: 0.95rem;
+  }
+
+  .main-content {
+    width: 100% !important;
+    padding: 30px 22px !important;
   }
 
   .profile-img {
-    width: 130px;
-    height: 130px;
+    width: 130px !important;
+    height: 130px !important;
+  }
+
+  header h1 {
+    font-size: 1.9rem !important;
+    text-align: center;
+  }
+
+  header h2 {
+    font-size: 1.2rem !important;
+    text-align: center;
+  }
+
+  section h3 {
+    font-size: 1.1rem;
   }
 
   .project-card {
-    width: 100%;
+    width: 100% !important;
   }
 
-  input, textarea {
-    width: 100%;
+  input,
+  textarea {
+    width: 100% !important;
+  }
+}
+
+/* SMALL PHONE */
+@media screen and (max-width: 430px) {
+  .sidebar {
+    padding: 25px 18px !important;
+  }
+
+  .main-content {
+    padding: 25px 18px !important;
+  }
+
+  header h1 {
+    font-size: 1.6rem !important;
+  }
+
+  header h2 {
+    font-size: 1rem !important;
+  }
+
+  .profile-img {
+    width: 115px !important;
+    height: 115px !important;
+  }
+
+  p,
+  .sidebar ul li {
+    font-size: 0.9rem;
+  }
+
+  .project-card {
+    padding: 12px;
   }
 }
