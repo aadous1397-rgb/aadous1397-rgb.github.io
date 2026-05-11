@@ -12,40 +12,37 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
-  background-color: var(--bg-color);
+  background: var(--bg-color);
   color: var(--text-color);
-  display: flex;
-  justify-content: center;
   padding: 40px 20px;
+  overflow-x: auto;
   animation: pageFade 1s ease-in-out;
 }
 
+/* CV */
 .container {
   background: white;
-  width: 100%;
-  max-width: 1000px;
+  width: 900px;
+  min-width: 900px;
+  margin: auto;
   display: flex;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  min-height: 100vh;
+  min-height: 1100px;
 }
 
-/* SIDEBAR */
+/* LEFT */
 .sidebar {
-  background-color: var(--primary-color);
-  color: white;
   width: 30%;
+  background: var(--primary-color);
+  color: white;
   padding: 40px 20px;
   animation: slideFromLeft 1s ease;
 }
 
 .profile-img-container {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .profile-img {
@@ -61,15 +58,15 @@ body {
   transform: scale(1.06);
 }
 
-.sidebar h3 {
-  border-bottom: 2px solid var(--accent-color);
-  margin-bottom: 15px;
-  padding-bottom: 5px;
-  font-size: 1.1rem;
+.sidebar section {
+  margin-bottom: 35px;
 }
 
-.sidebar section {
-  margin-bottom: 30px;
+.sidebar h3 {
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
 }
 
 .sidebar ul {
@@ -77,12 +74,11 @@ body {
 }
 
 .sidebar ul li {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
   gap: 10px;
-  word-break: break-word;
 }
 
 .sidebar a {
@@ -94,7 +90,7 @@ body {
   color: var(--accent-color);
 }
 
-/* MAIN */
+/* RIGHT */
 .main-content {
   width: 70%;
   padding: 50px;
@@ -108,7 +104,7 @@ header {
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   color: var(--primary-color);
   text-transform: uppercase;
   animation: titleZoom 1.2s ease;
@@ -117,6 +113,7 @@ header h1 {
 header h2 {
   color: var(--accent-color);
   font-weight: 400;
+  margin-top: 5px;
 }
 
 section {
@@ -136,7 +133,7 @@ p {
   color: var(--text-color);
 }
 
-/* FORMATION */
+/* Formation */
 .formation-btn {
   width: 100%;
   padding: 12px;
@@ -163,23 +160,13 @@ p {
   font-size: 14px;
 }
 
-/* SKILLS */
+/* Skills */
 .bar {
   background: #ddd;
   height: 13px;
   margin-bottom: 18px;
   border-radius: 20px;
   overflow: hidden;
-  position: relative;
-}
-
-.bar::after {
-  content: attr(data-percent);
-  position: absolute;
-  right: 8px;
-  top: -20px;
-  font-size: 12px;
-  color: #555;
 }
 
 .progress {
@@ -189,7 +176,7 @@ p {
   border-radius: 20px;
 }
 
-/* PROJECTS */
+/* Projects */
 .project-card {
   border: 1px solid #ddd;
   padding: 15px;
@@ -200,8 +187,8 @@ p {
 }
 
 .project-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 10px #bbb;
+  transform: translateY(-5px);
+  box-shadow: 0 0 12px #bbb;
 }
 
 .project-card h4 {
@@ -223,7 +210,7 @@ p {
   background: var(--primary-color);
 }
 
-/* FORM */
+/* Form */
 input,
 textarea {
   width: 100%;
@@ -252,10 +239,9 @@ button[type="submit"]:hover {
 
 #result {
   font-weight: bold;
-  margin-top: 10px;
 }
 
-/* SCROLL ANIMATION */
+/* Animations */
 .reveal {
   opacity: 0;
   transform: translateY(25px);
@@ -267,7 +253,6 @@ button[type="submit"]:hover {
   transform: translateY(0);
 }
 
-/* PAGE ANIMATIONS */
 @keyframes pageFade {
   from {
     opacity: 0;
@@ -312,121 +297,17 @@ button[type="submit"]:hover {
   }
 }
 
-/* TABLET */
+/*  PC */
 @media screen and (max-width: 900px) {
   body {
-    padding: 20px 10px;
+    padding: 10px;
+    overflow-x: auto;
   }
 
   .container {
-    max-width: 100%;
-  }
-
-  .sidebar {
-    width: 35%;
-    padding: 30px 18px;
-  }
-
-  .main-content {
-    width: 65%;
-    padding: 35px 25px;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-}
-
-/* TELEPHONE */
-@media screen and (max-width: 768px) {
-  body {
-    padding: 0 !important;
-    display: block;
-    overflow-x: hidden;
-  }
-
-  .container {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    flex-direction: column !important;
-    box-shadow: none;
-  }
-
-  .sidebar {
-    width: 100% !important;
-    padding: 30px 22px !important;
-    text-align: center;
-  }
-
-  .sidebar ul li {
-    justify-content: center;
-    font-size: 0.95rem;
-  }
-
-  .main-content {
-    width: 100% !important;
-    padding: 30px 22px !important;
-  }
-
-  .profile-img {
-    width: 130px !important;
-    height: 130px !important;
-  }
-
-  header h1 {
-    font-size: 1.9rem !important;
-    text-align: center;
-  }
-
-  header h2 {
-    font-size: 1.2rem !important;
-    text-align: center;
-  }
-
-  section h3 {
-    font-size: 1.1rem;
-  }
-
-  .project-card {
-    width: 100% !important;
-  }
-
-  input,
-  textarea {
-    width: 100% !important;
-  }
-}
-
-/* SMALL PHONE */
-@media screen and (max-width: 430px) {
-  .sidebar {
-    padding: 25px 18px !important;
-  }
-
-  .main-content {
-    padding: 25px 18px !important;
-  }
-
-  header h1 {
-    font-size: 1.6rem !important;
-  }
-
-  header h2 {
-    font-size: 1rem !important;
-  }
-
-  .profile-img {
-    width: 115px !important;
-    height: 115px !important;
-  }
-
-  p,
-  .sidebar ul li {
-    font-size: 0.9rem;
-  }
-
-  .project-card {
-    padding: 12px;
+    width: 900px;
+    min-width: 900px;
+    max-width: 900px;
+    flex-direction: row;
   }
 }
