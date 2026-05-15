@@ -180,3 +180,13 @@ button[type="submit"]{
   margin-top:10px;
   font-weight:bold;
 }
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: 0.7s;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
