@@ -38,3 +38,19 @@ $(document).ready(function () {
   });
 
 });
+function revealSections() {
+  $(".reveal").each(function () {
+    let sectionTop = $(this).offset().top;
+    let windowBottom = $(window).scrollTop() + $(window).height();
+
+    if (windowBottom > sectionTop + 80) {
+      $(this).addClass("active");
+    }
+  });
+}
+
+revealSections();
+
+$(window).scroll(function () {
+  revealSections();
+});
